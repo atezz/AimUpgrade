@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Aim Upgrade</title>
+        
+        <!-- Link to external style sheet -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="/favicon_io/site.webmanifest">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Link php file-->
+        <form action="./php/score.php" method="post"></form>
+
+    </head>
+    <body>
+        <!-- Background video -->
+        <video autoplay muted loop id="background-video" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="./Valorant 2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Banner describing the page -->
+        <div class="banner" style="position: relative; background-color: transparent;"> 
+            <p style="font-size: 60px; font-family: 'SportfielsOutline'; letter-spacing: 5px; color: #222086;">AIM UPGRADE</p>
+            <img src="Blue Neon Gradient Gaming Club Logo.gif" alt="headshot" style="position: absolute; top: 0; left: 0; width: 150px; height: auto;">
+            <img src="Blue Neon Gradient Gaming Club Logo.gif" alt="headshot" style="position: absolute; top: 0; right: 0; width: 150px; height: auto;">
+        </div>
+        <!-- Navigation section -->
+        <div class="navigation">    
+            <a href="index.html" style="font-family: 'SportfieldScribble';">Home</a>
+            <a href="game_page.html" style="font-family: 'SportfieldScribble';">Game</a>
+            <a class="selected" href="login.html" style="font-family: 'SportfieldScribble';">Login</a>
+            <a href="register.html" style="font-family: 'SportfieldScribble';">Register</a>
+            <a href="score.html" style="font-family: 'SportfieldScribble';">Score</a>
+        </div>
+
+        <!-- Brief description of Login Page -->
+        <p style="color:black; font-size:30px; font-family: Magz; text-align: center;"> Welcome to the Login Page</p>
+        <p style=" font-size:20px; font-family: Magz; text-align: center;"> Please login to access your profile </p>
+
+
+        <!-- Assigning variable to user input -->
+        <div style="text-align: center; font-size: 20px; color: #222086; font-family: SportfieldScribble; letter-spacing: 5px;" id="loginPara"> <!-- Login input fields -->
+            <div style="display: inline-block; text-align: left;">
+                <label for="emailInput">Email:</label>
+                <input class="input" type="text" id="emailInput" style="display: block; margin-bottom: 10px; width: 300px; height: 50px;"><br>
+                
+                <label for="passwordInput">Password:</label>
+                <input class="input" type="text" id="passwordInput" style="display: block; margin-bottom: 10px; width: 300px; height: 50px;"><br>
+            </div>    
+            <!-- Button to start login JavaScript function -->
+            <div class="center" style="padding: 20px;"> 
+                <button class="button" onclick="login()" style="font-family: Magz;">Login</button> 
+            </div>
+        </div>
+
+           
+        
+
+            <!-- Display error message if any -->
+        <p id="loginFailure" style="color:rgb(255, 0, 0); font-size:25px; text-align: center; padding: 20px; font-family: LaFemmeMakita; letter-spacing: 5px;"></p>
+    
+    <!-- JavaScript-->
+    <script>
+        window.onload = checkLogin;//Check to see if user is logged in already
+
+            function checkLogin(){
+                if(localStorage.playerLogin !== undefined){
+                    //Extract details of logged in user
+                    let usrObj = JSON.parse(localStorage.playerLogin);
+                    
+                    //Say hello to logged in user
+                    document.getElementById("loginPara").innerHTML = usrObj + " logged in.";
+                }
+            }
+            let cookies = document.cookie;
+
+            function login(){
+                //Get email address
+                let email = document.getElementById("emailInput").value;
+                let password = document.getElementById("passwordInput").value; // get user input from storage
+                
+                //User does not have an account
+                if (email === ""){
+                    alert("Please enter registered Email.")
+                    email.focus
+                    return false
+                }
+
+                if(localStorage[email] === undefined){
+                    //Inform user that they do not have an account
+                    document.getElementById("loginFailure").innerHTML = "Email not recognized. This email has not been registered.";
+                    return; //Do nothing else
+                }
+                else{//User has an account
+                    let usrObj = JSON.parse(localStorage[email]);//Convert to object
+                    let password = document.getElementById("passwordInput").value; // get user input from storage
+                    
+                    var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g; //Javascript reGex for Email Validation.
+                                  
+                        // Display if all conditions are met
+                        if(password === usrObj.password){//Successful login
+                            document.getElementById("loginPara").innerHTML = usrObj.email + " logged in.";
+                            document.getElementById("loginFailure").innerHTML = "";//Clear any login failures
+                            
+                            var testObject = {};
+                            testObject.login = usrObj.email
+                            localStorage.setItem('playerLogin', JSON.stringify(testObject.login));
+                    
+                        }
+                        else{
+                            // if password is incorrect
+                            document.getElementById("loginFailure").innerHTML = "Password not correct. Please try again.";
+                        }
+                }
+            }
+    </script>
+    
+    <!-- Footer for main page with contact info of creator -->
+    <footer style="color:#ffffff">  
+        <p> <b>Developer: Miriam Yakowa</b> </p>
+        <p><a href="mailto:ariamc.lyaks2002@gmail.com" style="color:#ffffff"> ariamc.lyaks2002@gmail.com </a> </p>
+        <P> Video credit belongs to Riot Games, Inc.</P>
+    </footer>
+        
+    </body>
+    
+
+</html>

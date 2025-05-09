@@ -1,0 +1,170 @@
+body{
+    width: 1330px;
+    background-color: white;
+}
+
+.banner {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 1px; 
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navigation a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 100px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+    color: #004691;
+}
+
+.selected {
+    width: 100px;
+    background-color: rgb(0, 255, 255);
+    padding: 10px;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(0, 0, 0);
+}
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: #222086;
+    color: black;
+    clear: both;
+    padding-top: 25px;
+  }
+
+.grid {
+	width: 606px;
+	height: 606px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.square {
+	height: 200px;
+	width: 200px;
+	border: solid black 2px;
+}
+
+.mole {
+	background-image: url("balloon.jpg");
+	background-size: cover;
+}
+.button {
+    font-family: 'Times New Roman', Times, serif;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background-color: #222086;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px rgb(134, 134, 134);
+}
+  
+.button:hover {background-color: blue}
+  
+.button:active {
+    background-color: blue;
+    box-shadow: 0 5px rgb(0, 0, 0);
+    transform: translateY(4px);
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5px;
+}
+
+.input {
+    width: 18%;
+    padding: 12px 20px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 2px solid #222086;
+    border-radius: 2px;
+    background-color: lightcyan;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+  }
+
+.display{
+    color: #222086;
+    text-align: center;
+    font-size:20px;
+    padding: 10px;
+}
+
+@keyframes pop {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+  
+  .pop-effect {
+    animation: pop 0.3s ease-out;
+  }
+
+@font-face {
+    font-family: 'Magz';
+    src: url(./Magz.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'LaFemmeMakita';
+    src: url(./LaFemmeMakita.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'SportfieldGrunge';
+    src: url(./Sportfield\ Varsity-Grunge.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'SportfielsOutline';
+    src: url(./Sportfield\ Varsity-Outline3.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'SportfieldShadow';
+    src: url(./Sportfield\ Varsity-Shadow.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'SportfieldScribble';
+    src: url(./Sportfield\ Varsity-Scrible.otf) format('opentype');
+}

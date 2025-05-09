@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Aim Upgrade</title>
+        
+        <!-- Link to external style sheet -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="/favicon_io/site.webmanifest">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Link php file-->
+        <form action="./php/score.php" method="post"></form>
+
+    </head>
+    <body>
+        <!-- Background video -->
+        <video autoplay muted loop id="background-video" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+            <source src="./Valorant 2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Banner describing the page -->
+        <div class="banner" style="position: relative; background-color: transparent;"> 
+            <p style="font-size: 60px; font-family: 'SportfielsOutline'; letter-spacing: 5px; color: #222086;">AIM UPGRADE</p>
+            <img src="Blue Neon Gradient Gaming Club Logo.gif" alt="headshot" style="position: absolute; top: 0; left: 0; width: 150px; height: auto;">
+            <img src="Blue Neon Gradient Gaming Club Logo.gif" alt="headshot" style="position: absolute; top: 0; right: 0; width: 150px; height: auto;">
+        </div>
+        <!-- Navigation section -->
+        <div class="navigation">    
+            <a href="index.html" style="font-family: 'SportfieldScribble';">Home</a>
+            <a href="game_page.html"style="font-family: 'SportfieldScribble';">Game</a>
+            <a href="login.html"style="font-family: 'SportfieldScribble';">Login</a>
+            <a href="register.html"style="font-family: 'SportfieldScribble';">Register</a>
+            <a class="selected" href="score.html"style="font-family: 'SportfieldScribble';">Score</a>
+        </div>
+
+        <!-- Brief description of Score Page -->
+        <p style="color:black; font-size:30px; font-family: Magz; text-align: center;"> Welcome to the Score Page </p>
+        <p style=" font-size:20px; font-family: Magz; text-align: center;"> Your score is displayed below </p>
+        <p style="color: #222086; font-size:30px; font-family: SportfieldScribble; letter-spacing: 5px; text-align: center;"> Player Score: </p>
+
+        <!-- Unorganized list -->
+        <ol>
+            <li class="display" id="result"></li>
+        </ol>
+
+        <p style="text-align: center; font-size: 18px;"><!-- Registration input fields -->
+        <div class="center" style="padding: 20px;">
+            <!-- Button to start login JavaScript function -->
+            <button class="button" onclick="deleteItems()" style="font-family: Magz;"> Reset scores </button>
+        </div>
+        </p>
+
+        <!-- JavaScript-->
+        <script>
+            // display name and score from local storage of logged in player
+            function displayScore() {
+                if (localStorage.length === 0){ // if local storage is empty
+                    document.getElementById("result").innerHTML = "You must register/login and play the game to display your name and score here ";
+                }
+                if (localStorage.playerLogin != null){ // when all validations are met display name and score
+                    document.getElementById("result").innerHTML = localStorage.playerName + " your score is " + localStorage.playerScore ;
+                }
+                else{ // if login information is empty
+                    document.getElementById("result").innerHTML = "Please register/log in to your account.";
+                }
+            }
+
+            displayScore()
+
+            // functiont to clear local storage for other users
+            function deleteItems() {
+                // Clear localStorage items 
+                localStorage.clear();
+                document.getElementById("result").innerHTML = "Please register/login and play the game to have your score displayed ";
+            }
+
+        </script>
+        
+        <!-- Link to add image -->
+        <div style="text-align: center; padding: 20px;">
+            <img src="score.jpg" alt="score" style="width: 50%; height: auto;">
+        </div>
+    
+        <!-- Footer for main page with contact info of creator -->
+        <footer style="color:rgb(255, 255, 255)";>  
+            <p> <b>Developer: Miriam Yakowa</b> </p>
+            <p><a href="mailto:ariamc.lyaks2002@gmail.com" style="color:rgb(255, 255, 255)"> ariamc.lyaks2002@gmail.com </a> </p>
+            <P> Video credit belongs to Riot Games, Inc.</P>
+        </footer>
+        
+    </body>
+    
+
+</html>
